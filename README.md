@@ -1,6 +1,6 @@
 # GT-Attendance-Toolbox
 
-国投实名制同步工具箱 —— 海康威视考勤机管理桌面应用
+考勤机管理桌面应用 —— 配置推送、同步人员、定时任务
 
 ## 功能
 
@@ -17,7 +17,7 @@
 | 前端 | TypeScript + Vite |
 | 桌面框架 | Tauri 2.x |
 | 后端逻辑 | Rust |
-| 设备通信 | ISAPI (Digest Auth) |
+| 设备通信 | HTTP/Digest Auth |
 | 配置格式 | YAML |
 
 ## 快速开始
@@ -52,7 +52,7 @@ npm run tauri build
 
 ```yaml
 app:
-  title: "国投实名制同步 - XX项目"
+  title: "考勤同步工具箱"
 
 devices:
   - id: "device_1"
