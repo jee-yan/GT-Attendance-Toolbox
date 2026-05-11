@@ -1,0 +1,66 @@
+# ============================================
+# DS-K1T670M 工具箱配置文件
+# 路径: ~/.ds-k1t670m/config.yaml
+# ============================================
+
+# 应用设置
+app:
+  title: "你的应用标题"
+
+# 按钮配置（固定 4 个，按顺序从左到右、从上到下排列）
+buttons:
+  - id: "button_1"
+    label: "按钮一名称"
+    action:
+      type: script
+      script: |
+        // 在此编写按钮一的执行逻辑
+        // 支持 async/await、fetch 等 Web API
+        // 必须返回 { success: boolean, message: string }
+        return { success: true, message: '执行完成' };
+
+  - id: "button_2"
+    label: "按钮二名称"
+    action:
+      type: script
+      script: |
+        return { success: true, message: '执行完成' };
+
+  - id: "button_3"
+    label: "按钮三名称"
+    action:
+      type: http
+      method: GET
+      url: "http://你的服务地址/api/接口路径"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer 你的token"
+
+  - id: "button_4"
+    label: "按钮四名称"
+    action:
+      type: http
+      method: POST
+      url: "http://你的服务地址/api/接口路径"
+      headers:
+        Content-Type: "application/json"
+      body: '{"key": "你的请求数据"}'
+
+# 定时任务配置（通过界面开关控制是否执行）
+schedules:
+  - id: "task_1"
+    name: "任务一名称"
+    cron: "0 */5 * * * *"    # 每 5 分钟
+    action:
+      type: http
+      method: GET
+      url: "http://你的服务地址/api/接口路径"
+
+  - id: "task_2"
+    name: "任务二名称"
+    cron: "0 0 8 * * *"      # 每天 08:00
+    action:
+      type: script
+      script: |
+        // 定时任务执行的脚本逻辑
+        return { success: true, message: '任务完成' };

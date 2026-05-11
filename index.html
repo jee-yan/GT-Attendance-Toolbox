@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工具箱</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <!-- License 弹窗（启动时） -->
+  <div id="license-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <h2>输入注册码</h2>
+      <p class="modal-desc">请输入有效的注册码以激活应用</p>
+      <input type="text" id="license-input" placeholder="XXXX-XXXX-XXXX" autocomplete="off" />
+      <div id="license-error" class="error-text hidden"></div>
+      <button id="license-submit">验证</button>
+    </div>
+  </div>
+
+  <!-- License 管理弹窗 -->
+  <div id="license-manage-modal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeLicenseManage()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeLicenseManage()">&times;</button>
+      <h2>License 管理</h2>
+      <p class="modal-desc">当前注册码：<span id="current-code">-</span></p>
+      <input type="text" id="new-license-input" placeholder="输入新注册码" autocomplete="off" />
+      <div id="new-license-error" class="error-text hidden"></div>
+      <button id="new-license-submit">切换</button>
+      <button id="license-logout" class="btn-danger">注销</button>
+    </div>
+  </div>
+
+  <div id="app">
+    <header id="title-bar">
+      <h1 id="app-title">工具箱</h1>
+    </header>
+
+    <main id="button-grid"></main>
+
+    <div id="scheduler-toggle">
+      <span class="toggle-label">定时任务</span>
+      <label class="switch">
+        <input type="checkbox" id="scheduler-switch">
+        <span class="slider"></span>
+      </label>
+      <span id="scheduler-status" class="status-off">已关闭</span>
+    </div>
+
+    <footer id="log-section">
+      <div id="log-header" onclick="toggleLog()">
+        <span id="log-toggle">日志</span>
+        <div id="log-actions">
+          <button id="btn-clear-log" onclick="clearLogs(event)">清空</button>
+          <button id="btn-import" onclick="importConfig(event)">导入配置</button>
+          <button id="btn-license" onclick="openLicenseManage(event)">License</button>
+        </div>
+      </div>
+      <div id="log-panel" class="hidden">
+        <div id="log-content"></div>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
